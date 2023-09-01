@@ -1,0 +1,45 @@
+<!--
+    Crea un arreglo de n números flotantes aleatorios y muestra el número mayor y el número menor. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio #08</title>
+</head>
+<body>
+    <script>
+        var numeros = [];
+        var numero;
+        var mayor;
+        var menor;
+        var i = 0;
+        var resultado = "";
+        var longitud = parseInt(prompt("Ingrese la cantidad de números que desea generar"));
+        if(isNaN(longitud)){
+            alert("No es un número");
+        }
+        else{
+            do{
+                numero = Math.round(Math.random() * 100);
+                numeros.push(numero);
+                i++;
+            }while(i < longitud);
+            mayor = numeros[0];
+            menor = numeros[0];
+            for(var j = 0; j < numeros.length; j++){
+                if(numeros[j] > mayor){
+                    mayor = numeros[j];
+                }
+                if(numeros[j] < menor){
+                    menor = numeros[j];
+                }
+                resultado += numeros[j] + " - ";
+            }
+            alert("Números generados:\n" + resultado + "\nNúmero mayor: " + mayor + "\nNúmero menor: " + menor);
+        }
+    </script>
+</body>
+</html>

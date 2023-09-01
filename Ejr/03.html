@@ -1,0 +1,57 @@
+<!--
+    Crea una calculadora iterativa que tenga las funciones básicas: suma, resta, multiplicación y división. El programa deberá recibir dos números y una operación, y deberá mostrar el resultado de la operación. Utilice un sistema de errores para evitar que el usuario ingrese una operación no válida utilizando try y catch. utilice funciones flecha para operaciones y funciones normales para el resultado y un switch para elgir las operaciones.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 03</title>
+</head>
+<body>
+    <script>
+        do{
+            let num1 = parseInt(prompt("Introduce el primer número"));
+            let num2 = parseInt(prompt("Introduce el segundo número"));
+            let operacion = prompt("Introduce la operación a realizar: \n + (suma)\n - (resta)\n * (multiplicación)\n / (división)");
+            let resultado = 0;
+            try{
+                if(isNaN(num1) || isNaN(num2)){
+                    throw new Error("No se han introducido números");
+                }
+                switch(operacion){
+                    case "+":
+                        resultado = (num1, num2) => num1 + num2;
+                        break;
+                    case "-":
+                        resultado = (num1, num2) => num1 - num2;
+                        break;
+                    case "*":
+                        resultado = (num1, num2) => num1 * num2;
+                        break;
+                    case "/":
+                        if(num2 == 0){
+                            throw new Error("No se puede dividir entre 0");
+                        }
+                        resultado = (num1, num2) => num1 / num2;
+                        break;
+                    default:
+                        throw new Error("Operación no válida");
+                }
+                alert("El resultado es: " + resultado(num1, num2));
+
+           
+            }catch(error){
+                alert("Error: " + error.message);
+            }finally{
+                let continuar = prompt("¿Desea continuar? (s/n)").toLocaleLowerCase();
+                if(continuar == "n"){
+                    alert("Hasta luego");
+                    break;
+                }
+            }
+        }while(true);
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!--Escriba un programa que simule el inicio de sesión de una página web. Deberá almacenar un usuario y una contraseña, mientras que el usuario no ingrese el nombre de usuario y la contraseña correctos el programa deberá enviar un mensaje de error, una vez que el usuario ingrese las entradas correctas, el programa enviará un mensaje indicando que se inició sesión de manera correcta. Utilice try y catch.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <script>
+        var usuario = "usuario";
+        var contraseña = "contraseña";
+        var usuarioIngresado;
+        var contraseñaIngresada;
+        var intentos = 0;
+        var maxIntentos = 3;
+        var mensaje = "¡Bienvenido!";
+        do{
+            try {
+                usuarioIngresado = prompt("Ingrese su usuario");
+                contraseñaIngresada = prompt("Ingrese su contraseña");
+                if (intentos === maxIntentos) {
+                    throw new Error("¡Demasiados intentos!");
+                }
+
+                if (usuarioIngresado === usuario && contraseñaIngresada === contraseña) {
+                    alert(mensaje);
+                } else {
+                    throw new Error("Usuario o contraseña incorrectos");
+                    intentos++;
+                }
+            }
+            catch (error) {
+            alert("Error: " + error.message);
+            }
+            finally {
+                alert("Numero de intentos: " + intentos + " de " + maxIntentos);
+            }
+        } while (usuarioIngresado !== usuario || contraseñaIngresada !== contraseña);
+    </script>
+</body>
+</html>

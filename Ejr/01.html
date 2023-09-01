@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Piedra, Papel o Tijera 
+    </title>
+</head>
+<body>
+    <script>
+
+        /**
+        * Juego de Piedra, Papel o Tijera con elección aleatoria de la máquina 
+        */
+        
+        var eleccionMaquina;
+        var eleccionUsuario;
+        var resultado;
+        var ganadosMaquina = 0;
+        var ganadosUsuario = 0;
+        var empates = 0;
+        var partidas = 0;
+        
+        do{
+        // Elección de la máquina
+        eleccionMaquina = Math.floor(Math.random() * 3);
+        
+        if (eleccionMaquina === 0) {
+            eleccionMaquina = "piedra";
+        }
+        else if (eleccionMaquina === 1) {
+            eleccionMaquina = "papel";
+        }
+        else {
+            eleccionMaquina = "tijera";
+        }
+        
+       // Elección del usuario
+       eleccionUsuario = prompt("¿Piedra, papel o tijera?").toLowerCase();
+       
+       // Comparación de elecciones
+       if (eleccionUsuario === eleccionMaquina) {
+           resultado = "¡Empate!";
+            empates++;
+        }
+        else if (eleccionUsuario === "piedra") {
+            if (eleccionMaquina === "papel") {
+                resultado = "¡Perdiste!";
+                ganadosMaquina++;
+            }
+            else {
+                resultado = "¡Ganaste!";
+                ganadosUsuario++;
+            }
+        }
+        else if (eleccionUsuario === "papel") {
+            if (eleccionMaquina === "tijera") {
+                resultado = "¡Perdiste!";
+                ganadosMaquina++;
+            }
+            else {
+                resultado = "¡Ganaste!";
+                ganadosUsuario++;
+            }
+        }
+        else if (eleccionUsuario === "tijera") {
+            if (eleccionMaquina === "piedra") {
+                resultado = "¡Perdiste!";
+                ganadosMaquina++;
+            }
+            else {
+                resultado = "¡Ganaste!";
+                ganadosUsuario++;
+            }
+        }
+        else {
+            resultado = "¡Elección incorrecta!";
+
+        }
+    
+    // Mostrar resultado
+    alert("Elegiste " + eleccionUsuario + " y la máquina eligió " + eleccionMaquina + ". " + resultado);
+    alert("Partidas ganadas por la máquina: " + ganadosMaquina + "\nPartidas ganadas por el usuario: " + ganadosUsuario + "\nEmpates: " + empates);
+    var respuesta = prompt("¿Quieres volver a jugar?: Si o No").toLowerCase();
+    partidas++;
+    } while (respuesta === "si");
+    alert("Has jugado " + partidas + " partidas.");
+    alert("Partidas ganadas por la máquina: " + ganadosMaquina + "\nPartidas ganadas por el usuario: " + ganadosUsuario + "\nEmpates: " + empates);
+    alert("¡Hasta la próxima!");
+
+    // Fin
+    </script>
+</body>
+</html>

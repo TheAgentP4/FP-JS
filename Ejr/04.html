@@ -1,0 +1,21 @@
+<!--
+    Solicita al usuario una contraseña de al menos 10 caracteres. Si no cumple la condición vuelvela a pedir hasta que la cumpla.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio #04</title>
+</head>
+<body>
+    <script>
+        var password;
+        do{
+            password = prompt("Ingrese una contraseña de al menos 10 caracteres");
+        }while(password.length < 10);
+        alert("Contraseña correcta");
+    </script>
+</body>
+</html>

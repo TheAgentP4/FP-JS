@@ -1,0 +1,29 @@
+<!--
+    Solicita al usuario que ingrese un número y muestra su tabla de multiplicar hasta el 10. Todos los resultados deben mostrarse en una sola alerta, cada uno en una línea diferente.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio #06</title>
+</head>
+<body>
+    <script>
+        var numero;
+        var i = 1.0;
+        var resultado = "";
+        numero = parseFloat(prompt("Ingrese un número"));
+        if(isNaN(numero)){
+            alert("No es un número");
+        }
+        do{
+            
+            resultado += numero + " x " + i + " = " + numero * i + "\n";
+            i++;
+        }while(i <= 10);
+        alert(resultado);
+    </script>
+</body>
+</html>

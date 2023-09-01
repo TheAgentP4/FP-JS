@@ -1,0 +1,31 @@
+<!--
+    Crea un arreglo de n palabras de un banco de palabras aleatorias y muestra las palabras que contengan la letra "a".
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio #09</title>
+</head>
+<body>
+    <script>
+        var palabras = [];
+        const banco = ["casa", "perro", "gato", "ratón", "elefante", "jirafa", "caballo", "pájaro", "pez", "tortuga", "serpiente", "cocodrilo", "tiburón", "delfín", "ballena", "mono", "tigre", "león", "oso", "lobo", "vaca", "oveja", "cerdo", "pollo", "pato", "gallina", "águila", "búho", "loro", "colibrí", "araña", "escorpión", "mosca", "mosquito", "abeja", "hormiga", "araña", "escarabajo", "mariposa", "libélula", "rana", "sapo", "lagartija", "iguana", "camaleón", "cocodrilo", "tortuga", "tiburon"];
+        var palabra = "";
+        var longitud = parseInt(prompt("Ingrese la cantidad de palabras que desea agregar al arreglo"));
+        if(isNaN(longitud)){
+            alert("No es un número");
+        }
+        else{
+            for(var i = 0; i < longitud; i++){
+                palabra = banco[Math.floor(Math.random() * banco.length)];
+                palabras.push(palabra);
+            }
+            alert("Palabras elegidas:\n" + palabras.join(" - "));      
+            alert("Palabras que contienen la letra 'a':\n" + palabras.filter(palabra => palabra.includes("a")).join(" - "));
+        }
+    </script>
+</body>
+</html>

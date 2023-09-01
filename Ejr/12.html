@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio #12</title>
+    <style>
+        .cheeremote{
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <section class="bitsInfo bitsHidden" id="bitsInfo">
+        <div class="closeBits close" id="01">
+            <span class="close" id="close01">&#x292B</span>
+        </div>
+    </section>
+    <section class="bitsHeader">
+        <h2>Apoya a tu streamer favorito</h2>
+        <p>Selesciona un Cheeremote para empezar tu Cheer</p>
+        <a href="#" id="">¿Como enviar un Cheer?</a>
+    </section>
+    <section class="bitsCheermote">
+        <img src="../assets/img/cheer1.png" alt="cheer1" id="cheer1"class="cheeremote">
+        <img src="../assets/img/cheer2.png" alt="cheer2" id="cheer2"class="cheeremote">
+        <img src="../assets/img/cheer3.png" alt="cheer3" id="cheer3"class="cheeremote">
+    </section>
+    <section class="bitsFooter">
+        <div class="bits">Tienes <b><span id="bits">0</span> Bits</b></div>
+        <button class="getBits" id="buy">Conseguir Bits</button>
+    </section>
+    <section class="buyBits bitsHidden" id="buy-Bits">
+        <div class="closeBits"><span class="close" id="close01">&#x292B</span></div>
+    </section>
+    <section class="buyHeader">
+        <h1>Compra Bits</h1>
+        <p>Los precios estan en MXN</p>
+    </section>
+    <section class="bitsPrices">
+        <div class="bitsPrice">
+            <div class="bits">100 bits</div>
+            <button data-bits="100" class="buyButton">$32.71</button>
+        </div>
+        <div class="bitsPrice">
+            <div class="bitsPrice">
+                <div class="bits">1000 bits</div>
+                <button data-bits="1000" class="buyButton">$163.57</button>
+            </div>
+        </div>
+        <div class="bitsPrice">
+            <div class="bitsPrice">
+                <div class="bits">10000 bits</div>
+                <button data-bits="10000" class="buyButton">$466.16</button>
+            </div>
+        </div>
+    </section>
+    <section class="chat">
+        <img src="../assets/img/perritu.png" alt="" class="chatIdentity">
+        <input type="text" class="chatMessage" id="chatBits">
+        <img src="../assets/img/bits.png" alt="" class="chatBits" id="chatBits">
+    </section>
+    <script>
+        const buyButtons = document.querySelectorAll('.buyButton')
+        const totalBitsSpan = document.getElementById('bits')
+
+        let totalBits = 0
+
+        buyButtons.forEach(button => {
+            const bits = parseInt(button.getAttribute('data-bits'))
+            button.addEventListener('click', () => {
+                totalBits += bits 
+                totalBitsSpan.textContent = totalBits
+            })
+        })
+
+    </script>
+</html>
