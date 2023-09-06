@@ -1,0 +1,261 @@
+<!--
+    Ejercicio #15: Hacer que funcione
+    Reglas de encriptación:
+    1. La letra "a" se convierte en "enter"
+    2. La letra "e" se convierte en "imes"
+    3. La letra "i" se convierte en "ai"
+    4. La letra "o" se convierte en "ober"
+    5. La letra "u" se convierte en "ufat"
+
+    Reglas de desencriptación:
+    1. Las mismas reglas de encriptación pero al revés
+
+    Tambien se tiene que verificar que el texto ingresado no tenga acentos y que solo sean letras minúsculas con una función de Javascript.
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de texto</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+        }
+        header{
+            width: 100%;
+            height: 10vh;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        section{
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        textarea{
+            width: 100%;
+            height: 50%;
+            resize: none;
+            padding: 0%;
+            font-size: 1.5rem;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+        textarea::placeholder{
+            font-size: 1.5rem;
+            padding: 0%;
+        }
+        textarea:focus{
+            outline: none;
+        }
+        p{
+            font-size: 1.5rem;
+            color: #000;
+        }
+        div{
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        button{
+            width: 40%;
+            height: 50%;
+            font-size: 1.5rem;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background: #fff;
+            cursor: pointer;
+        }
+        button:hover{
+            background: #000;
+            color: #fff;
+        }
+        #resultado{
+            width: 100%;
+            height: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #resultado:hover{
+            color: #000;
+        }
+        img{
+            width: 20%;
+            height: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+        span{
+            width: 100%;
+            height: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        span:hover{
+            color: #000;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header> 
+        <p>Encriptador de texto</p>
+    </header>
+    <main>
+        <section>
+            <textarea cols="40" rows="12" placeholder="Ingrese el texto aquí"></textarea>
+            <p>	&#9432; Sólo letras minúsculas y sin acentos</p>
+            <div>
+                <button>Encriptar</button>
+                <button>Desencriptar</button>
+            </div>
+        </section>
+
+        <section>
+            <span id="resultado">Resultado?</span>
+            <div>
+                <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Imagen buscando texto">
+                <span>Ningún mensaje fue encontrado</span>
+                
+            </div>
+            <div>
+                <button id="bttn-cpy">Copiar</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const textarea = document.querySelector("textarea");
+        const resultado = document.querySelector("#resultado");
+        const img = document.querySelector("img");
+        const span = document.querySelectorAll("span")[1];
+        const button = document.querySelector("button");
+        const button2 = document.querySelectorAll("button")[1];
+        const bttnCpy = document.querySelector("#bttn-cpy");
+
+        function verificarTexto(){
+            if (textarea.value.match('[A-Z]') != null || textarea.value.match('[áéíóú]')) {
+                alert("Sólo letras minúsculas y sin acentos");
+                window.location.reload();
+            }else if(textarea.value === "" || textarea.value === " "){
+                alert("Escribe texto")
+                window.location.reload();
+            }
+        }
+
+        button.addEventListener("click", () => {
+            let texto = textarea.value;
+            verificarTexto()
+            let textoEncriptado = "";
+            if (textarea.value === "") {
+                img.src = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
+                span.textContent = "Ingresa el texto que desees encriptar o desencriptar.";
+            }else{
+                for (let i = 0; i < texto.length; i++) {                 
+                    
+                    if (texto[i] === "a") {
+                        textoEncriptado += "enter";
+                    } else if (texto[i] === "e") {
+                        textoEncriptado += "imes";
+                    } else if (texto[i] === "i") {
+                        textoEncriptado += "ai";
+                    } else if (texto[i] === "o") {
+                        textoEncriptado += "ober";
+                    } else if (texto[i] === "u") {
+                        textoEncriptado += "ufat";
+                    } else {
+                        textoEncriptado += texto[i];
+                    }
+                }
+            resultado.textContent = textoEncriptado;
+            img.src = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
+            span.textContent = "Texto encriptado";
+        }
+        });
+
+        button2.addEventListener("click", () => {
+            verificarTexto()
+            let texto = textarea.value;
+            let textoDesencriptado = "";
+            for (let i = 0; i < texto.length; i++) {
+                if (texto[i] === "e" && texto[i + 1] === "n" && texto[i + 2] === "t" && texto[i + 3] === "e" && texto[i + 4] === "r") {
+                    textoDesencriptado += "a";
+                    i += 4;
+                } else if (texto[i] === "i" && texto[i + 1] === "m" && texto[i + 2] === "e" && texto[i + 3] === "s") {
+                    textoDesencriptado += "e";
+                    i += 3;
+                } else if (texto[i] === "a" && texto[i + 1] === "i") {
+                    textoDesencriptado += "i";
+                    i += 1;
+                } else if (texto[i] === "o" && texto[i + 1] === "b" && texto[i + 2] === "e" && texto[i + 3] === "r") {
+                    textoDesencriptado += "o";
+                    i += 3;
+                } else if (texto[i] === "u" && texto[i + 1] === "f" && texto[i + 2] === "a" && texto[i + 3] === "t") {
+                    textoDesencriptado += "u";
+                    i += 3;
+                } else {
+                    textoDesencriptado += texto[i];
+                }
+            }
+            resultado.textContent = textoDesencriptado;
+            img.src = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
+            span.textContent = "Texto desencriptado";
+        });
+
+        button.addEventListener("click", () => {
+            if (textarea.value === "") {
+                img.src = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
+                span.textContent = "Ingresa el texto que desees encriptar o desencriptar.";
+            }
+        });
+
+        button2.addEventListener("click", () => {
+            if (textarea.value === "") {
+                img.src = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
+                span.textContent = "Ingresa el texto que desees encriptar o desencriptar.";
+            }
+        });
+
+        bttnCpy.addEventListener("click", () => {
+            let texto = resultado.textContent;
+            navigator.clipboard.writeText(texto);
+        });
+    
+
+
+
+    </script>
+</body>
+</html>
