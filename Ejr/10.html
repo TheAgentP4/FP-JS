@@ -1,61 +1,61 @@
 <!--
     Crea 5 botones que al hacer click en él, cambie el color de fondo de la página.
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio #10</title>
+    <meta name="description" content="Proyecto de la clase de Fundamentos de Programación en JavaScript">
+    <meta name="keywords" content="HTML, CSS, JavaScript, FP, Fundamentos de Programación, UNAM, FI, UNICA">
+    <meta name="author" content="Diego Medina Ramírez">
+    <title>Ejercicio #10 - Botón que cambia el color de fondo</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css" type="text/css" media="all">
 </head>
-<body>
-
-    <button id="red">Rojo</button>
-    <button id="blue">Azul</button>
-    <button id="green">Verde</button>
-    <button id="yellow">Amarillo</button>
-    <button id="purple">Morado</button>
-
+<body id="body">    
+    <header>
+        <h1>Ejercicio #10 - Botón que cambia el color de fondo</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Descripción</h2>
+            <p>Crea 5 botones que al hacer click en él, cambie el color de fondo de la página.</p>
+        </section>
+        <section>
+            <button id="red">Rojo</button>
+            <button id="blue">Azul</button>
+            <button id="green">Verde</button>
+            <button id="yellow">Amarillo</button>
+            <button id="purple">Morado</button>        
+        </section>
+        <p><a href="../index.html" title="Regresar al inicio">Regresar al inicio</a></p>
+    </main>
     <script>
-
+        addEventListener("load", function(){
+            document.body.style.backgroundImage = "url(../img/10.jpg)";
+        });
         var red = document.getElementById("red");
         var blue = document.getElementById("blue");
         var green = document.getElementById("green");
         var yellow = document.getElementById("yellow");
         var purple = document.getElementById("purple");
-
         red.addEventListener("click", function(){
-
             document.body.style.backgroundColor = "red";
-
         });
-
         blue.addEventListener("click", function(){
-
             document.body.style.backgroundColor = "blue";
-
         });
-
         green.addEventListener("click", function(){
-
             document.body.style.backgroundColor = "green";
-
         });
-
         yellow.addEventListener("click", function(){
-
             document.body.style.backgroundColor = "yellow";
-
         });
-
         purple.addEventListener("click", function(){
-
             document.body.style.backgroundColor = "purple";
-
-        });
-        
+        }); 
         </script>
-    
 </body>
 </html>

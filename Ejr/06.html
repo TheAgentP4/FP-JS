@@ -6,10 +6,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio #06</title>
+    <meta name="description" content="Proyecto de la clase de Fundamentos de Programación en JavaScript">
+    <meta name="keywords" content="HTML, CSS, JavaScript, FP, Fundamentos de Programación, UNAM, FI, UNICA">
+    <meta name="author" content="Diego Medina Ramírez">
+    <title>Ejercicio #06 - Tabla de multiplicar</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css" type="text/css" media="all">
 </head>
-<body>
+<body> 
+    <header>
+        <h1>Ejercicio 6 - Tabla de multiplicar</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Descripción</h2>
+            <p>Este es el sexto ejercicio de la clase de Fundamentos de Programación en JavaScript. Solicita al usuario que ingrese un número y muestra su tabla de multiplicar hasta el 10. Todos los resultados deben mostrarse en una sola alerta, cada uno en una línea diferente.</p>
+        </section>
+        <p><a href="../index.html" title="Regresar al inicio">Regresar al inicio</a></p>
+    </main>
     <script>
         var numero;
         var i = 1.0;
@@ -19,7 +35,6 @@
             alert("No es un número");
         }
         do{
-            
             resultado += numero + " x " + i + " = " + numero * i + "\n";
             i++;
         }while(i <= 10);

@@ -1,15 +1,31 @@
-<!--
-    Crea una calculadora iterativa que tenga las funciones básicas: suma, resta, multiplicación y división. El programa deberá recibir dos números y una operación, y deberá mostrar el resultado de la operación. Utilice un sistema de errores para evitar que el usuario ingrese una operación no válida utilizando try y catch. utilice funciones flecha para operaciones y funciones normales para el resultado y un switch para elgir las operaciones.
 
+<!--
+    Crea una calculadora con las funciones principales de suma, resta, multiplicación y división.
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 03</title>
+    <meta name="description" content="Proyecto de la clase de Fundamentos de Programación en JavaScript">
+    <meta name="keywords" content="HTML, CSS, JavaScript, FP, Fundamentos de Programación, UNAM, FI, UNICA">
+    <meta name="author" content="Diego Medina Ramírez">
+    <title>Ejercicio #03 - Calculadora</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css" type="text/css" media="all">
 </head>
-<body>
+<body>  
+    <header>
+        <h1>Ejercicio 3 - Calculadora</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Descripción</h2>
+            <p>Este es el tercer ejercicio de la clase de Fundamentos de Programación en JavaScript. Es una calculadora con las operaciones básicas (+, -, *, /) usando un bucle do-while y un bloque try-catch-finally.</p>
+        </section>
+        <p><a href="../index.html" title="Regresar al inicio">Regresar al inicio</a></p>
+    </main>
     <script>
         do{
             let num1 = parseInt(prompt("Introduce el primer número"));
@@ -39,9 +55,7 @@
                     default:
                         throw new Error("Operación no válida");
                 }
-                alert("El resultado es: " + resultado(num1, num2));
-
-           
+                alert("El resultado es: " + resultado(num1, num2));           
             }catch(error){
                 alert("Error: " + error.message);
             }finally{
