@@ -38,22 +38,14 @@
             transform: scale(1.1);
         }
         .contenido{
-            top: 0;
-            left: 0;
-            
             display: none;
-            margin: 1rem;
-            width: max-content;
-            height: max-content;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            text-align: center;
+            width: min(100%, 50rem);
+            height: 20rem;
+            margin: 5rem;
             position: absolute;
             align-items: center;
-            
-            font-size: 30px;
-            color: #000;
+            justify-content: center;
+            font-size: 5rem;
         }
         .cajaOculta{
             display: none;
@@ -62,13 +54,18 @@
         }
 
         .sorpresa{
-            width: 100;
-            height: 100;
-            background-color: #000;
-            border-radius: 10px;
+            display: flex;
+            background-color: #00000088;
+            border-radius: 2rem;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            text-align: center;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
             color: #fff;
-            font-size: 30px;
-            line-height: 300px;
         }
 
         
@@ -88,65 +85,90 @@
             <img src="..\assets\img\caja2.png" class="cajaOculta" id="caja02">
             <img src="../assets/img/caja1.png" class="caja" id="caja03">
             <img src="..\assets\img\caja2.png" class="cajaOculta" id="caja04">
-            <img src="../assets/img/caja1.png" class="caja" id="caja04">
-            <img src="..\assets\img\caja2.png" class="cajaOculta" id="caja05">
+            <img src="../assets/img/caja1.png" class="caja" id="caja05">
+            <img src="..\assets\img\caja2.png" class="cajaOculta" id="caja06">
         </div>
-        <div class="contenido">
+        <div class="contenido" id="contenido01">
             <div class="sorpresa">
                 ¡¡¡Ganaste!!!
             </div>
-        </div>    
+        </div>
+        <div class="contenido" id="contenido03">
+            <div class="sorpresa">
+                ¡¡¡Volviste a ganar!!!
+            </div>
+        </div>
+        <div class="contenido" id="contenido05">
+            <div class="sorpresa">
+                ¡¡¡Ganaste por tercera vez!!!
+            </div>
+        </div>
         <p><a href="../index.html" title="Regresar al inicio">Regresar al inicio</a></p>
     </main>
-
-
-    <script>
-        document.addEventListener("keyup", (event) => {
-            if(event.key == "Escape"){
-                cerrar();
-            }
-        }
-        );
+    <script>   
         function abrir(){
             switch (this.id){
                 case "caja01":
                     document.getElementById("caja01").style.display = "none";
                     document.getElementById("caja02").style.display = "flex";
-                    document.getElementById("caja02").style.justifyContent = "center";
+                    document.getElementById("contenido01").style.display = "flex";
                     break;
-                case "caja03":
-                    document.getElementById("caja03").style.display = "none";
-                    document.getElementById("caja04").style.display = "flex";
-                    break;
-                case "caja05":
-                    document.getElementById("caja05").style.display = "none";
-                    document.getElementById("caja06").style.display = "flex";
-                    break;
+                    case "caja03":
+                        document.getElementById("caja03").style.display = "none";
+                        document.getElementById("caja04").style.display = "flex";
+                        document.getElementById("contenido03").style.display = "flex";
+                        break;
+                    case "caja05":
+                        document.getElementById("caja05").style.display = "none";
+                        document.getElementById("caja06").style.display = "flex";
+                        document.getElementById("contenido05").style.display = "flex";
+                        break;
+                    
             }
         }
         function cerrar(){
-            if(document.getElementById("caja02").style.display == "flex"){
+            switch (this.id){
+                case "caja02":
+                    document.getElementById("caja02").style.display = "none";
+                    document.getElementById("caja01").style.display = "flex";
+                    document.getElementById("contenido01").style.display = "none";
+                    break;
+                    case "caja04":
+                        document.getElementById("caja04").style.display = "none";
+                        document.getElementById("caja03").style.display = "flex";
+                        document.getElementById("contenido03").style.display = "none";
+                    break;
+                    case "caja06":
+                        document.getElementById("caja06").style.display = "none";
+                        document.getElementById("caja05").style.display = "flex";
+                        document.getElementById("contenido05").style.display = "none";
+                    break;
+                }
+        }
+        document.getElementById("caja01").addEventListener("click", abrir);
+        document.getElementById("caja02").addEventListener("click", cerrar);
+        document.getElementById("caja03").addEventListener("click", abrir);
+        document.getElementById("caja04").addEventListener("click", cerrar);
+        document.getElementById("caja05").addEventListener("click", abrir);
+        document.getElementById("caja06").addEventListener("click", cerrar);
+       
+        document.addEventListener("keyup", function(event){
+            if(event.keyCode == 27){
                 document.getElementById("caja02").style.display = "none";
                 document.getElementById("caja01").style.display = "flex";
-            }
-            if(document.getElementById("caja04").style.display == "flex"){
                 document.getElementById("caja04").style.display = "none";
                 document.getElementById("caja03").style.display = "flex";
-            }
-            if(document.getElementById("caja06").style.display == "flex"){
                 document.getElementById("caja06").style.display = "none";
                 document.getElementById("caja05").style.display = "flex";
+                document.getElementById("contenido01").style.display = "none";
+                document.getElementById("contenido03").style.display = "none";
+                document.getElementById("contenido05").style.display = "none";
+
             }
-        }
-        
-        document.querySelector("#caja01").addEventListener("click", abrir);
-        document.querySelector("#caja02").addEventListener("click", cerrar);
-        document.querySelector("#caja03").addEventListener("click", abrir);
-        document.querySelector("#caja04").addEventListener("click", cerrar);
-        document.querySelector("#caja05").addEventListener("click", abrir);
-        document.querySelector("#caja06").addEventListener("click", cerrar);
-        
-        
-    </script>
+        });
+
+            
+      
+        </script>
 </body>
 </html>
