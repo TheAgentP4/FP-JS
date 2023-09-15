@@ -39,6 +39,8 @@ body {
     color: var(--dark-gray);
     background-image: url(../assets/img/stone.png);
     background-repeat: repeat;
+    background-size: 10%;
+
     
 }
 
@@ -74,15 +76,20 @@ h2 {
 p {
     font-size: medium;
     margin-bottom: 1rem;
+    margin: 1rem;
     padding-top: 1rem;
     text-align: center;
 
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
 
 }
 
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--light-gray);
+    background-color: var(--dark-gray);
+    border-top: 1px solid var(--light-gray);
+    margin-top:auto;
+
+
+}
