@@ -17,7 +17,7 @@
     <style>
         .cajas{
             
-    
+            display: flex;
             justify-content: space-around;
             align-items: center;
             width: auto;
@@ -83,18 +83,22 @@
             <h2>Descripción</h2>
             <h>¡Crea una caja sorpresa! Añade estilos al ejercicio resuelto en clase.</h>
         </section>
+        <div class="cajas">
+            <img src="../assets/img/caja1.png" class="caja" id="caja01">
+            <img src="..\assets\img\caja2.png" class="cajaOculta" id="caja02">
+            <img src="../assets/img/caja1.png" class="caja" id="caja03">
+            <img src="..\assets\img\caja2.png" class="cajaOculta" id="caja04">
+            <img src="../assets/img/caja1.png" class="caja" id="caja04">
+            <img src="..\assets\img\caja2.png" class="cajaOculta" id="caja05">
+        </div>
+        <div class="contenido">
+            <div class="sorpresa">
+                ¡¡¡Ganaste!!!
+            </div>
+        </div>    
         <p><a href="../index.html" title="Regresar al inicio">Regresar al inicio</a></p>
     </main>
 
-    <div class="cajas">
-        <img src="../assets/img/caja1.png" class="caja" id="caja01">
-        <img src="..\assets\img\caja2.png" class="cajaOculta" id="caja02">
-    </div>
-    <div class="contenido">
-        <div class="sorpresa">
-            ganaste
-        </div>
-    </div>
 
     <script>
         document.addEventListener("keyup", (event) => {
@@ -104,24 +108,45 @@
         }
         );
         function abrir(){
-            document.getElementById("caja01").style.display = "none";
-            document.getElementById("caja02").style.display = "flex";
-            document.getElementsByClassName("contenido")[0].style.display = "flex";
-            document.getElementsByClassName("cajaOculta")[0].style.display = "flex";
-
-
+            switch (this.id){
+                case "caja01":
+                    document.getElementById("caja01").style.display = "none";
+                    document.getElementById("caja02").style.display = "flex";
+                    document.getElementById("caja02").style.justifyContent = "center";
+                    break;
+                case "caja03":
+                    document.getElementById("caja03").style.display = "none";
+                    document.getElementById("caja04").style.display = "flex";
+                    break;
+                case "caja05":
+                    document.getElementById("caja05").style.display = "none";
+                    document.getElementById("caja06").style.display = "flex";
+                    break;
+            }
         }
         function cerrar(){
-            document.getElementById("caja01").style.display = "flex";
-            document.getElementById("caja02").style.display = "none";
-            document.getElementsByClassName("contenido")[0].style.display = "none";
-            document.getElementsByClassName("cajaOculta")[0].style.display = "none";
+            if(document.getElementById("caja02").style.display == "flex"){
+                document.getElementById("caja02").style.display = "none";
+                document.getElementById("caja01").style.display = "flex";
+            }
+            if(document.getElementById("caja04").style.display == "flex"){
+                document.getElementById("caja04").style.display = "none";
+                document.getElementById("caja03").style.display = "flex";
+            }
+            if(document.getElementById("caja06").style.display == "flex"){
+                document.getElementById("caja06").style.display = "none";
+                document.getElementById("caja05").style.display = "flex";
+            }
         }
         
         document.querySelector("#caja01").addEventListener("click", abrir);
         document.querySelector("#caja02").addEventListener("click", cerrar);
+        document.querySelector("#caja03").addEventListener("click", abrir);
+        document.querySelector("#caja04").addEventListener("click", cerrar);
+        document.querySelector("#caja05").addEventListener("click", abrir);
+        document.querySelector("#caja06").addEventListener("click", cerrar);
         
-
+        
     </script>
 </body>
 </html>
