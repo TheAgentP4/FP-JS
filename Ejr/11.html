@@ -9,14 +9,12 @@
     <meta name="keywords" content="HTML, CSS, JavaScript, FP, Fundamentos de Programación, UNAM, FI, UNICA">
     <meta name="author" content="Diego Medina Ramírez">
     <title>Ejercicio #11 - ¡Caja sorpresa!</title>
-    
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/styles.css" type="text/css" media="all">
     <style>
         .cajas{
-            
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -52,7 +50,6 @@
             width: 200px;
             height: 200px;
         }
-
         .sorpresa{
             display: flex;
             background-color: #00000088;
@@ -122,8 +119,7 @@
                         document.getElementById("caja05").style.display = "none";
                         document.getElementById("caja06").style.display = "flex";
                         document.getElementById("contenido05").style.display = "flex";
-                        break;
-                    
+                        break;        
             }
         }
         function cerrar(){
@@ -151,7 +147,6 @@
         document.getElementById("caja04").addEventListener("click", cerrar);
         document.getElementById("caja05").addEventListener("click", abrir);
         document.getElementById("caja06").addEventListener("click", cerrar);
-       
         document.addEventListener("keyup", function(event){
             if(event.keyCode == 27){
                 document.getElementById("caja02").style.display = "none";
@@ -163,12 +158,8 @@
                 document.getElementById("contenido01").style.display = "none";
                 document.getElementById("contenido03").style.display = "none";
                 document.getElementById("contenido05").style.display = "none";
-
             }
         });
-
-            
-      
         </script>
 </body>
 </html>
