@@ -6,31 +6,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio #14</title>
+    <meta name="description" content="Proyecto de la clase de Fundamentos de Programación en JavaScript">
+    <meta name="keywords" content="HTML, CSS, JavaScript, FP, Fundamentos de Programación, UNAM, FI, UNICA">
+    <meta name="author" content="Diego Medina Ramírez">
+    <title>Ejercicio #14 - Galeria de imagenes con Javascript y CSS (Carousel)</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css" type="text/css" media="all">
     <style>
-        body{
-            display: flex;
-            flex-direction: column;
-        }
         .gallery-container{
-            width: 80vw;
-            height: 100vh;
-            background: none;
-            position: fixed;
-            top:0;
-            padding: 0%;
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
-
         .carousel{
             width: 100vw;
             height: 100vh;
             position: relative;
         }
-
         .carousel > ul{
-            margin: 0;
+            margin: 0 auto;
             padding: 0 0%;
             list-style: none;
         }
@@ -43,7 +44,6 @@
             text-align: center;
             padding: 0%;
         }
-
         .slide > img{
             display: flex;
             justify-content:center;
@@ -55,11 +55,9 @@
             width: 100vw;
             height: auto;
         }
-
         .slide[data-active]{
             opacity: 1;
         }
-
         .carousel-button{
             position: absolute;
             z-index: 2;
@@ -78,7 +76,6 @@
             color: #1e0539b5;
             background-color: rgba(255, 255, 255, 0.6);
         }
-
         .carousel-button:focus{
             outline: 1px solid black;
         }
@@ -92,70 +89,96 @@
     </style>
 </head>
 <body>
-    <button class="galeryDisplay" onclick="displayGalery()">Abrir Galeria</button>
-    <div class="galery-container" id="carousel">
-        <div class="carousel" data-carousel>
-            <button class="carousel-button prev" data-carousel-button>&#8249</button>
-            <button class="carousel-button next" data-carousel-button>&#8250</button>
-
-            <ul data-slides>
-
-                <li class="slide" data-active>
-                    <img src="https://picsum.photos/id/237/1080/480" alt="">
-                </li>
-                <li class="slide">
-                    <img src="https://picsum.photos/id/238/1080/480" alt="">
-                </li>
-                <li class="slide">
-                    <img src="https://picsum.photos/id/239/1080/480" alt="">
-                </li>
-                <li class="slide">
-                    <img src="https://picsum.photos/id/240/1080/480" alt="">
-                </li>
-                <li class="slide">
-                    <img src="https://picsum.photos/id/241/1080/480" alt="">
-                </li>
-
-            </ul>
-
-
-        </div>
-    </div>
+    <header>
+        <h1>Ejercicio 14 - Galeria de imagenes con Javascript y CSS (Carousel)</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Descripción</h2>
+            <p>En este ejercicio se muestra una galeria de imagenes con un carousel hecho con Javascript y CSS</p>
+        </section>
+        <section>
+            <button class="displayGaleria" onclick="displayGallery()">Galería</button>
+            <div class="gallery-container" id="carousel">
+                <div class="carousel" data-carousel>
+                    <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
+                    <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
+                    <ul data-slides>
+                        
+                        <li class="slide" data-active>
+                            <img src="https://picsum.photos/id/237/1440/1080" title="Imagen 1" alt="Imagen 1">
+                        </li>
+                        <li class="slide">
+                            <img src="https://picsum.photos/id/238/1440/1080" title="Imagen 2" alt="Imagen 2">
+                        </li> 
+                        <li class="slide">
+                            <img src="https://picsum.photos/id/239/1440/1080" title="Imagen 3" alt="Imagen 3">
+                        </li> 
+                        <li class="slide">
+                            <img src="https://picsum.photos/id/240/1440/1080" title="Imagen 4" alt="Imagen 4">
+                        </li>
+                        <li class="slide">
+                            <img src="https://picsum.photos/id/241/1440/1080" title="Imagen 5" alt="Imagen 5">
+                        </li>
+                        <li class="slide">
+                            <img src="https://picsum.photos/id/242/1440/1080" title="Imagen 6" alt="Imagen 6">
+                        </li>
+                        <li class="slide">
+                            <img src="https://picsum.photos/id/243/1440/1080" title="Imagen 7" alt="Imagen 7">
+                        </li>
+                        <li class="slide">
+                            <img src="https://picsum.photos/id/244/1440/1080" title="Imagen 8" alt="Imagen 8">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <p><a href="../index.html" title="Regresar al inicio">Regresar al inicio</a></p>
+    </main>
     <script>
-        function displayGalery(){
-            document.getElementById("carousel").style.display = "inline";
+        function displayGallery(){
+            document.getElementById('carousel').style.display = 'inline';
         }
-
-        const buttons = document.querySelectorAll("[data-carousel-button]");
-
-        buttons.forEach(button => {
+        const buttons = document.querySelectorAll('[data-carousel-button]');
+        buttons.forEach(button =>{
             button.addEventListener("click", () => {
                 const offset = button.dataset.carouselButton === "next" ? 1 : -1;
-                const slides = button.closest("[data-carousel]").querySelector("[data-slide]");
-                const activeSlide = slides.querySelectorAll("[data-active]");
-                let nextIndex = [...slides.children].indexOf(activeSlide) + offset;
-                if(nextIndex < 0){
-                    nextIndex = slides.children.length - 1;
-                }else if(nextIndex >= slides.children.length){
-                    nextIndex = 0;
-                }
-                slides.children[nextIndex].dataset.active = true;
-                delete activeSlide.dataset.active;
+                const slides = button.closest('[data-carousel]').querySelector('[data-slides]');
+                const activeSlide = slides.querySelector('[data-active]');
+                let newIndex = [...slides.children].indexOf(activeSlide) + offset; 
+                if (newIndex < 0) newIndex = slides.children.length - 1;
+                if (newIndex >= slides.children.length) newIndex = 0;
 
-            
-                
-            });
-        });
-        document.addEventListener("keyup", e => {
-            if(e.key === 27){
-                document.getElementById("carouse").style.display = "none";
-            }
-        });
+                slides.children[newIndex].dataset.active = true;
+                delete activeSlide.dataset.active
+            })
+        })
+        document.addEventListener("keyup", function(event){
+            if (event.keyCode === 39){ 
+                const slides = document.querySelector('[data-slides]');
+                const activeSlide = slides.querySelector('[data-active]');
+                let newIndex = [...slides.children].indexOf(activeSlide) + 1; 
+                if (newIndex < 0) newIndex = slides.children.length - 1;
+                if (newIndex >= slides.children.length) newIndex = 0;
 
-        document.querySelector(".galeryDisplay").addEventListener("click", displayGalery);
-                
+                slides.children[newIndex].dataset.active = true;
+                delete activeSlide.dataset.active
+            } else if (event.keyCode === 37){
+                const slides = document.querySelector('[data-slides]');
+                const activeSlide = slides.querySelector('[data-active]');
+                let newIndex = [...slides.children].indexOf(activeSlide) - 1; 
+                if (newIndex < 0) newIndex = slides.children.length - 1;
+                if (newIndex >= slides.children.length) newIndex = 0;
+
+                slides.children[newIndex].dataset.active = true;
+                delete activeSlide.dataset.active
+            } else return;
+        });
+        document.addEventListener("keyup", function(event){
+            if (event.keyCode === 27){ 
+                document.getElementById('carousel').style.display = 'none';
+            } else return;
+        });
     </script>
-
-
 </body>
 </html>

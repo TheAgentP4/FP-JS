@@ -1,0 +1,71 @@
+<!--
+    Simula la verificación las credenciales de un usuario utilizando los métodos que manejan la asincronía en JS.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Proyecto de la clase de Fundamentos de Programación en JavaScript">
+    <meta name="keywords" content="HTML, CSS, JavaScript, FP, Fundamentos de Programación, UNAM, FI, UNICA">
+    <meta name="author" content="Diego Medina Ramírez">
+    <title>Ejercicio #17 - Simulación de validar credenciales con asincronía</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css" type="text/css" media="all">
+</head>
+<body>
+    <header>
+        <h1>Ejercicio 17 - Simulación de validar credenciales con asincronía</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Descripción</h2>
+            <p>Simula la verificación las credenciales de un usuario utilizando los métodos que manejan la asincronía en JS.<b>Checa la consola para ver los resultados</b></p>
+        </section>
+        <p><a href="../index.html" title="Regresar al inicio">Regresar al inicio</a></p>
+    </main>
+    <script>
+        const usuarios = [
+            { username: 'admin', password: 'admin' },
+            { username: 'user', password: 'user' },
+            { username: 'test', password: 'test' },
+            { username: 'demo', password: 'demo' },
+            { username: 'root', password: 'root' },
+            { username: 'guest', password: 'guest' },
+            
+        ];
+        function verificarDatos (username, password) {
+            return new Promise((resolve, reject) => {
+                const usuario = usuarios.find(usuario => usuario.username === username);
+                if (usuario) {
+                    if (usuario.password === password) {
+                        resolve(usuario);
+                    } else {
+                        reject('Credenciales incorrectas');
+                    }
+                } else {
+                    reject('Usuario no existe');
+                }
+            });
+        }
+        async function login (username, password) {
+            try {
+                const usuario = await verificarDatos(username, password);
+                console.log(`Bienvenido ${usuario.username}`);
+            } catch (error) {
+                console.log('Error: ', error);
+            } finally {
+                console.log('Proceso terminado');
+            }
+        }
+        login('admin', 'admin');
+        login('admin', 'admin1');
+        login('admin1', 'admin');
+        login('admin1', 'admin1');
+    </script>        
+</body>
+</html>
